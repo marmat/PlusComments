@@ -1,0 +1,89 @@
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/svn/!svn/ver/240/trunk/src/contrib
+END
+apiCustomsearchService.php
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/240/trunk/src/contrib/apiCustomsearchService.php
+END
+apiPredictionService.php
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/240/trunk/src/contrib/apiPredictionService.php
+END
+apiBloggerService.php
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/240/trunk/src/contrib/apiBloggerService.php
+END
+apiPagespeedonlineService.php
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/240/trunk/src/contrib/apiPagespeedonlineService.php
+END
+apiPlusService.php
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/240/trunk/src/contrib/apiPlusService.php
+END
+apiTasksService.php
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/240/trunk/src/contrib/apiTasksService.php
+END
+apiShoppingService.php
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/240/trunk/src/contrib/apiShoppingService.php
+END
+apiDiacritizeService.php
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/240/trunk/src/contrib/apiDiacritizeService.php
+END
+apiBuzzService.php
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/240/trunk/src/contrib/apiBuzzService.php
+END
+apiLatitudeService.php
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/240/trunk/src/contrib/apiLatitudeService.php
+END
+apiModeratorService.php
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/240/trunk/src/contrib/apiModeratorService.php
+END
+apiUrlshortenerService.php
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/240/trunk/src/contrib/apiUrlshortenerService.php
+END
+apiBooksService.php
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/240/trunk/src/contrib/apiBooksService.php
+END
+apiTranslateService.php
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/240/trunk/src/contrib/apiTranslateService.php
+END

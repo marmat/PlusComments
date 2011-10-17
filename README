@@ -1,0 +1,78 @@
++Comments is an extremly simple commenting system for your own website or blog,
+based on the functionalities of the Google+ API. 
+
+As the API is rather limited right now, here are some limitations to the system:
+* To create a new comment feed for a new post/section, you have to make a new
+  public Google+ post manually. Then, you have to get the ID of this post and
+  pass it to the get_comments() method
+* You/your users can't post new comments from within your website. Instead, they
+  have to go to the activity on Google+ and comment there (a link to the
+  activity is displayed, though)
+
+### How to use this code:
+
+* Include the 'comments.js' in the website where the comments
+  shall be shown
+* Open the file 'config.php' and insert your Google+ API key there
+* Make sure the 'url_cache.dat' is writable
+* Add the following HTML-comment in the place, where the comments section shall
+  be displayed:
+
+  <div class="comments" id="ACTIVITY_ID_HERE"></div>
+
+* That's it! The script grabs the comment automatically and inserts it into the
+  div element (if you're going with HTML5, you can also use a section element
+  instead of a div if you want)
+
+A working example of the comments section can be found here:
+http://plus.martinmatysiak.de/plus_comments/example.php
+
+Or here if you want to see it in a 'production' environment:
+http://martinmatysiak.de/blog/view/new-google-plus-api-features 
+
+### Modifying the behaviour:
+
+* If you want to alter the layout of the comments, just edit the 
+  'tmpl_comment.php' template file. Just make sure not to alter the field 
+  names. Furthermore, you can edit the 'tmpl_head.php' and  'tmpl_foot.php' 
+  to alter the wrapping html code. The following fields are available in the 
+  specific template files:
+
+  tmpl_comment.php: 
+  * $actorName : contains the full name of the commenter
+  * $actorImage : contains a URI which links to a profile picture of the
+    person who wrote the comment  
+  * $actorUrl : contains the URL which links to the commenter's profile page
+  * $published : contains a unix-timestamp of the date on which the comment
+    has been published
+  * $activityUrl : contains the URL which links to the activity on Google+
+  * $comment : contains the actual comment
+
+  tmpl_head.php and tmpl_foot.php:
+  * $activityUrl : contains the URL which links to the activity on Google+
+
+* If you don't want to use the JavaScript file, you can also include the 
+  plus_comments.php file directly (don't forget the css stylesheet, too). 
+  It contains the PlusComments class which is used to retrieve and render the 
+  comments. The only parameter which is expected in the constructor is the 
+  activityId of a Google+ post. You can then retrieve the comments using 
+  PlusComments.get_comments() (as raw objects) or using PlusComments.render() 
+  to get a String containing the rendered HTML-code using the templates 
+  mentioned above. Please see the plus_comments.php file for further 
+  documentation on available methods.
+
+### To-do:
+
+* Error handling
+* Allow more than 100 comments
+* Cache comments to reduce number of queries
+* Move the activityUrl caching into a database (?)
+* Write a nice little setup script, especially to make the previous two points
+  simpler to realize
+* Implement some kind of pagination
+
+The following would be nice to have, but has to wait until the Google+ API
+supports it:
+
+* Create a new Google+ activity automatically
+* Support posting of comments from within the website

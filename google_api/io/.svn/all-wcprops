@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 30
+/svn/!svn/ver/238/trunk/src/io
+END
+apiRPC.php
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/83/trunk/src/io/apiRPC.php
+END
+apiIO.php
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/238/trunk/src/io/apiIO.php
+END
+apiHttpRequest.php
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/195/trunk/src/io/apiHttpRequest.php
+END
+apiREST.php
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/233/trunk/src/io/apiREST.php
+END
+apiCurlIO.php
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/237/trunk/src/io/apiCurlIO.php
+END

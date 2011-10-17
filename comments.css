@@ -1,0 +1,23 @@
+.comments .comment footer {
+	height:32px;
+	font-family: sans-serif;
+}
+
+.comments .comment small {
+	display: block;
+	margin: 5px 0;
+}
+
+.comments .comment a {
+	color: #0B3B80;
+	text-decoration: none;
+}
+
+.comments .comment img {
+	margin-right:10px;
+}
+
+.comments .comment p {
+	margin-top:15px;
+	margin-left:42px;
+}
