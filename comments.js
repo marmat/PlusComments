@@ -2,8 +2,6 @@ function renderComments() {
 	// Grab all elements of the class "comments" and fetch their contents
 	commentSections = document.getElementsByClassName("comments");
 
-	console.dir(commentSections);
-
 	for (var i = 0; i < commentSections.length; i++) {
 		getComments(commentSections[i]);
 	}
@@ -11,14 +9,10 @@ function renderComments() {
 
 function getComments(target) {
 	target.innerHTML = "Fetching comments...";
-	console.dir(target);
-	console.log("Fetching data for " + target.id);
 	var ajax = new XMLHttpRequest();
 	ajax.open("GET", "plus_comments.php?activityId=" + target.id, true);
 	ajax.onreadystatechange = function(){
-		console.log("OnReadyStateChange");
 		if (ajax.readyState == 4) {
-			console.dir(ajax);
 			target.innerHTML = ajax.response;
 		}
 	}
