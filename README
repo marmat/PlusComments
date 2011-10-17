@@ -11,8 +11,8 @@ As the API is rather limited right now, here are some limitations to the system:
 
 ### How to use this code:
 
-* Include the 'comments.js' in the website where the comments
-  shall be shown
+* Include the 'comments.js' and 'comments.css' in the website where 
+  the comments shall be shown
 * Open the file 'config.php' and insert your Google+ API key there
 * Make sure the 'url_cache.dat' is writable
 * Add the following HTML-comment in the place, where the comments section shall
