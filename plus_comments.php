@@ -20,13 +20,32 @@ class PlusComments {
 		$this->activityId = $activityId;
 
 		// Initialize Google+ API
-		$apiClient = new apiClient();
-	    $apiClient->setDeveloperKey(PLUS_API_KEY);
-	    $this->plusApi = new apiPlusService($apiClient);
+		try {
+			$apiClient = new apiClient();
+		    $apiClient->setDeveloperKey(PLUS_API_KEY);
+		    $this->plusApi = new apiPlusService($apiClient);
 
-	    // Fetch comments for the given activity
-	    $query = $this->plusApi->comments->listComments($activityId, array('maxResults' => 100));
-	    $this->comments = isset($query->items) ? $query->items : array();
+		    // Fetch comments for the given activity
+		    $query = $this->plusApi->comments->listComments($activityId, array('maxResults' => 100));
+	    	$this->comments = isset($query->items) ? $query->items : array();
+	    } catch(apiServiceException $e) {
+	    	// Create a special comment that shows the error message (looks
+	    	// better than some weird unformatted exception message, doesn't
+	    	// it?)
+	    	$this->comments[] = new Comment(array(
+	    		'published' => date('c'),
+	    		'object' => array(
+	    			'content' => 'The comments for this post could not be fetched. Please check if you specified the correct activityId and API key.'
+		    	),
+		    	'actor' => array(
+		    		'displayName' => 'Error!',
+		    		'url' => '#',
+		    		'image' => array(
+		    			'url' => 'error.png'
+			    	)
+			    )
+		    ));
+	    }
 	}
 
 	/**
@@ -47,7 +66,12 @@ class PlusComments {
 
 		// If we are here, the URL has not been cached yet, so lets get it
 		// through the API
-		$url = $this->plusApi->activities->get($this->activityId)->url;
+		try {
+			$url = $this->plusApi->activities->get($this->activityId)->url;
+		} catch (apiServiceException $e) {
+			// This should NOT happen
+			return "";
+		}
 
 		// Rudimentary check if we have a valid URL and not an error message or
 		// something else
