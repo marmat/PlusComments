@@ -1,3 +1,0 @@
-<?php
-
-define('PLUS_API_KEY', 'PUT YOUR GOOGLE+ API KEY HERE');

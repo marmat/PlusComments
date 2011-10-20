@@ -2,8 +2,8 @@
 <html>
 	<head>
 		<title>Example</title>
-		<script src="comments.js"></script>
-		<link rel="stylesheet" href="comments.css">
+		<script src="plus_comments/comments.js"></script>
+		<link rel="stylesheet" href="plus_comments/comments.css">
 	</head>
 
 	<body>

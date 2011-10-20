@@ -41,7 +41,7 @@ class PlusComments {
 		    		'displayName' => 'Error!',
 		    		'url' => '#',
 		    		'image' => array(
-		    			'url' => 'error.png'
+		    			'url' => ERROR_IMAGE
 			    	)
 			    )
 		    ));

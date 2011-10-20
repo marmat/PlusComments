@@ -1,4 +1,19 @@
+var scriptPath = ""; // Will be filled automatically
+
 function renderComments() {
+	// Get the location of this script in order to determine the location
+	// of the PHP script which will be called to get the comments
+	scriptTags = document.getElementsByTagName('script');
+
+	for (var i = 0; i < scriptTags.length; i++) {
+		// Try to match the src parameter with a RegEx in order to get
+		// the relative location of the file
+		matches = /(.*)comments\.js$/g.exec(scriptTags[i].src);
+		if (matches != null) {
+			scriptPath = matches[1];
+		}
+	}
+
 	// Grab all elements of the class "comments" and fetch their contents
 	commentSections = document.getElementsByClassName("comments");
 
@@ -10,7 +25,7 @@ function renderComments() {
 function getComments(target) {
 	target.innerHTML = "Fetching comments...";
 	var ajax = new XMLHttpRequest();
-	ajax.open("GET", "plus_comments.php?activityId=" + target.id, true);
+	ajax.open("GET", scriptPath + "plus_comments.php?activityId=" + target.id, true);
 	ajax.onreadystatechange = function(){
 		if (ajax.readyState == 4) {
 			target.innerHTML = ajax.response;
