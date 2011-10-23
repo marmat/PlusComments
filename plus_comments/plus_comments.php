@@ -26,8 +26,26 @@ class PlusComments {
 		    $this->plusApi = new apiPlusService($apiClient);
 
 		    // Fetch comments for the given activity
-		    $query = $this->plusApi->comments->listComments($activityId, array('maxResults' => 100));
+		    $query = $this->plusApi->comments->listComments(
+			    $activityId, 
+			    array('maxResults' => 100)
+			);
+
 	    	$this->comments = isset($query->items) ? $query->items : array();
+
+	    	// Fetch additional comments (if present)
+	    	while (isset($query->nextPageToken)) {
+	    		$query = $this->plusApi->comments->listComments(
+		    		$activityId, 
+		    		array('maxResults' => 100, 'pageToken' => $query->nextPageToken)
+		    	);
+
+	    		$this->comments = array_merge(
+		    		$this->comments, 
+		    		isset($query->items) ? $query->items : array()
+		    	);
+	    	}
+
 	    } catch(apiServiceException $e) {
 	    	// Create a special comment that shows the error message (looks
 	    	// better than some weird unformatted exception message, doesn't

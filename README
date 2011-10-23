@@ -65,7 +65,6 @@ http://martinmatysiak.de/blog/view/new-google-plus-api-features
 
 ### To-do:
 
-* Allow more than 100 comments
 * Cache comments to reduce number of queries
 * Move the activityUrl caching into a database (?)
 * Write a nice little setup script, especially to make the previous two points
