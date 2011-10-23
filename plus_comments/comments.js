@@ -1,4 +1,6 @@
 var scriptPath = ""; // Will be filled automatically
+var comments = []; // Container for comments-pages
+var currentPage = []; // Array which holds the specific indexes of the current page
 
 function renderComments() {
 	// Get the location of this script in order to determine the location
@@ -22,13 +24,46 @@ function renderComments() {
 	}
 }
 
+function showNextPage(activityId) {
+	container = document.getElementById(activityId + '_comments');
+
+	// Add comments
+	container.innerHTML += comments[activityId][++currentPage[activityId]];
+
+	// Hide "more"-button if no more pages left
+	// Note: we substract 2 because the very last element contains the
+	// comments footer per design
+	if (currentPage[activityId] >= comments[activityId].length - 2) {
+		more = document.getElementById(activityId + '_more');
+		more.style.display = 'none';
+	}
+}
+
 function getComments(target) {
 	target.innerHTML = "Fetching comments...";
+	comments[target.id] = [];
+
 	var ajax = new XMLHttpRequest();
 	ajax.open("GET", scriptPath + "plus_comments.php?activityId=" + target.id, true);
 	ajax.onreadystatechange = function(){
 		if (ajax.readyState == 4) {
-			target.innerHTML = ajax.response;
+			comments[target.id] = ajax.response.split("<!--pagebreak-->");
+			
+			// Show the comments head, add a comments container
+			// and display the footer
+			target.innerHTML = comments[target.id][0];
+			target.innerHTML += '<div id="' + target.id + '_comments"></div>';
+			target.innerHTML += 
+				'<div class="comments_more" id="' + 
+				target.id + 
+				'_more" onclick="return showNextPage(\'' + 
+				target.id + 
+				'\')">More &raquo;</a>';
+			target.innerHTML += comments[target.id][comments[target.id].length - 1];
+
+			// Show the first page of comments
+			currentPage[target.id] = 0;
+			showNextPage(target.id);
 		}
 	}
 	ajax.send(null);
@@ -50,7 +85,7 @@ if (typeof XMLHttpRequest == "undefined")
 
 // The following is due to laziness taken from 
 // http://onlinetools.org/articles/unobtrusivejavascript/chapter4.html
-function addEvent(obj, evType, fn){ 
+function addEvent(obj, evType, fn) { 
 	if (obj.addEventListener){ 
 		obj.addEventListener(evType, fn, false); 
 		return true; 

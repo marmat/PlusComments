@@ -16,6 +16,7 @@ As the API is rather limited right now, here are some limitations to the system:
 * Include the 'plus_comments/comments.js' and 'plus_comments/comments.css' in 
   your website's head section
 * Open the file 'plus_comments/config.php' and insert your Google+ API key there
+  (you can set up other things there, too!)
 * Make sure the 'plus_comments/url_cache.dat' is writable
 * Add the following HTML code in the place, where the comments section shall
   be displayed:
@@ -69,7 +70,6 @@ http://martinmatysiak.de/blog/view/new-google-plus-api-features
 * Move the activityUrl caching into a database (?)
 * Write a nice little setup script, especially to make the previous two points
   simpler to realize
-* Implement some kind of pagination
 
 The following would be nice to have, but has to wait until the Google+ API
 supports it:

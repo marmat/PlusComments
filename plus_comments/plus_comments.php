@@ -141,14 +141,29 @@ class PlusComments {
 		include('tmpl_head.php');
 
 		// Print comments
-		foreach ($this->comments as $comment) {
+
+		// If the pagination is enabled, we insert a special HTML comment after
+		// every N comments which is used by the JavaScript as an indicator
+		// for a new page.
+		echo '<!--pagebreak-->';
+
+		foreach ($this->comments as $i => $comment) {
 			$actorName = $comment->actor->displayName;
 			$actorUrl = $comment->actor->url;
 			$actorImage = $comment->actor->image->url;
 			$published = strtotime($comment->published);
 			$comment = $comment->object->content;
 			include('tmpl_comment.php');
+
+			if (PAGINATION && (($i+1) % PAGINATION == 0)) {
+				echo '<!--pagebreak-->';
+			}
 		}
+
+		// An additional comment is written to the beginning and the end of
+		// the actual comments in order to seperate the comments from header
+		// and footer.
+		echo '<!--pagebreak-->';
 
 		// Delete the comment-specific fields
 		unset($actor_name);

@@ -21,3 +21,21 @@
 	margin-top:15px;
 	margin-left:42px;
 }
+
+.comments .comments_more {
+	padding:1em;
+	background-color:#F1F1F1;
+	border:1px solid #DCDCDC;
+	border-radius:3px;
+	font-family: sans-serif;
+	font-weight:bold;
+	font-size:small;
+	color: #333;
+	text-align:center;
+	text-shadow: 1px 1px 1px #FFF;
+}
+
+.comments .comments_more:hover {
+	background-color:#E9E9E9;
+	cursor:pointer;
+}
