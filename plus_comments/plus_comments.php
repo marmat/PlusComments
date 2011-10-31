@@ -28,7 +28,10 @@ class PlusComments {
 		    // Fetch comments for the given activity
 		    $query = $this->plusApi->comments->listComments(
 			    $activityId, 
-			    array('maxResults' => 100)
+			    array(
+				    'maxResults' => 100, 
+			    	'fields' => 'items(actor(displayName,image,url),object/content,published),nextPageToken'
+			    )
 			);
 
 	    	$this->comments = isset($query->items) ? $query->items : array();
@@ -37,7 +40,11 @@ class PlusComments {
 	    	while (isset($query->nextPageToken)) {
 	    		$query = $this->plusApi->comments->listComments(
 		    		$activityId, 
-		    		array('maxResults' => 100, 'pageToken' => $query->nextPageToken)
+		    		array(
+			    		'maxResults' => 100, 
+			    		'pageToken' => $query->nextPageToken,
+			    		'fields' => 'items(actor(displayName,image,url),object/content,published),nextPageToken'
+			    	)
 		    	);
 
 	    		$this->comments = array_merge(
