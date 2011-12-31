@@ -157,7 +157,7 @@ class PlusComments {
 		foreach ($this->comments as $i => $comment) {
 			$actorName = $comment->actor->displayName;
 			$actorUrl = $comment->actor->url;
-			$actorImage = $comment->actor->image->url;
+			$actorImage = preg_replace('/\?sz=.*/i', '', $comment->actor->image->url);
 			$published = strtotime($comment->published);
 			$comment = $comment->object->content;
 			include('tmpl_comment.php');
